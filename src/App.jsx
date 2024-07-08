@@ -1,51 +1,72 @@
+import { IoMdSearch } from "react-icons/io";
+import { RiHome2Line } from "react-icons/ri";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { FaBars, FaRegHeart } from "react-icons/fa";
+
 function App() {
   return (
     <div className="App">
       <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-yellow-600">
-            Beauty<span className="text-black">Home</span>
+        <div className="container mx-auto px-4 py-8 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-black">
+            Beauty<span className="text-yellow-600">Home</span>
           </h1>
-          <div className="flex items-center space-x-4">
+          <div className="items-center border border-gray-300 w-1/2 hidden md:flex">
             <input
               type="text"
               placeholder="Search products"
-              className="border border-gray-300 rounded-full px-4 py-2 hidden md:block"
+              className="flex-grow px-4 py-2 focus:outline-none"
             />
-            <button className="text-yellow-600 hidden md:block">
-              Wishlist
+            <div className="w-px h-6 bg-gray-300"></div>
+            <div className="p-2 text-gray-500">
+              <i className="text-yellow-600 text-2xl">
+                <IoMdSearch />
+              </i>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button className="hidden md:flex items-center space-x-1">
+              <RiHome2Line className="text-base text-yellow-600" />
+              <span>Home</span>
             </button>
-            <button className="text-red-600 hidden md:block">My Cart</button>
+            <button className="hidden md:flex items-center space-x-1">
+              <FaRegHeart className="text-base text-yellow-600" />
+              <span>Wishlist</span>
+            </button>
+            <button className="hidden md:flex items-center space-x-1">
+              <MdOutlineShoppingCart className="text-base text-yellow-600" />
+              <span>Cart</span>
+            </button>
             <button className="md:hidden">
-              <i className="fas fa-bars"></i>
+              <FaBars className="text-yellow-600 text-base" />
             </button>
           </div>
         </div>
       </header>
 
-      <div className="bg-pink-100 py-12">
+      <div className="bg-pink-100 bg-cover bg-center bg-no-repeat py-12 bg-[url('./assets/HeroImage.jpg')]">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold">Beauty Store</h2>
+          <h2 className="text-4xl font-bold text-white">Beauty Store</h2>
         </div>
       </div>
 
       <main className="container mx-auto px-4 py-8">
         <section>
           <h2 className="text-3xl font-bold mb-6">Products</h2>
-          <div className="mb-6 flex flex-col md:flex-row justify-between">
+          <div className="mb-6 flex flex-col md:flex-row items-center gap-2">
             <span>Sort By: </span>
-            <select className="border border-gray-300 rounded-full px-4 py-2">
+            <select className="border border-gray-300 p-2">
               <option>Most Recent</option>
-              <option>Price: Low to High</option>
-              <option>Price: High to Low</option>
+              <option>Low to High</option>
+              <option>High to Low</option>
             </select>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[...Array(18)].map((_, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[...Array(20)].map((_, index) => (
               <div key={index} className="bg-white shadow-md rounded-lg p-4">
                 <img
-                  src="path/to/product.jpg"
-                  alt="Product"
+                  src="./src/assets/ProductImage.jpg"
+                  alt="Product Image"
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
                 <div className="mt-4">
