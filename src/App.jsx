@@ -1,7 +1,14 @@
 import { IoMdSearch } from "react-icons/io";
 import { RiHome2Line } from "react-icons/ri";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { FaBars, FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
+import {
+  FaBars,
+  FaRegHeart,
+  FaRegStar,
+  FaStar,
+  FaAngleRight,
+  FaAngleLeft,
+} from "react-icons/fa";
 
 function App() {
   return (
@@ -94,24 +101,36 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center mt-6">
-            <button className="px-4 py-2 bg-gray-200 rounded-full mx-1">
+          <div className="flex justify-center mt-16">
+            <button className="px-4 py-2 bg-gray-100 rounded-lg mx-1">
+              <FaAngleLeft className="text-lg" />
+            </button>
+            <button className="px-4 py-2 bg-black text-white rounded-lg mx-1">
               1
             </button>
-            <button className="px-4 py-2 bg-gray-200 rounded-full mx-1">
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
               2
             </button>
-            <button className="px-4 py-2 bg-gray-200 rounded-full mx-1">
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
               3
             </button>
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+              4
+            </button>
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+              5
+            </button>
             <span className="px-4 py-2">...</span>
-            <button className="px-4 py-2 bg-gray-200 rounded-full mx-1">
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
               50
+            </button>
+            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+              <FaAngleRight className="text-lg" />
             </button>
           </div>
         </section>
 
-        <section className="bg-yellow-100 p-8 rounded-lg mt-12 flex flex-col md:flex-row items-center">
+        <section className="bg-yellow-100 p-8 rounded-lg mt-16 flex flex-col md:flex-row items-center">
           <img
             src="path/to/image.jpg"
             alt="Beautician"
