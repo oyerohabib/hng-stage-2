@@ -20,7 +20,7 @@ export default function Cart() {
         </nav>
         <h1 className="text-5xl mb-6">Cart</h1>
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="lg:w-2/3 bg-white p-6 rounded shadow-sm overflow-auto">
+          <div className="lg:w-[70%] bg-white p-6 rounded shadow-sm overflow-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-yellow-100">
                 <tr>
@@ -43,15 +43,15 @@ export default function Cart() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr>
-                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[18rem]">
+                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
                     <img
                       src="../../assets/ProductImage.jpg"
                       alt="Venus Eye Pencil Collection"
                       className="w-16 h-16 mr-4"
                     />
                     <div>
-                      <div>Venus Eye Pencil Collection - 4-in-1 Pack</div>
-                      <div>
+                      <div>Venus Eye Pencil Collection</div>
+                      <div className="mt-2">
                         <b>Size: </b>
                         <span className="text-gray-500">5&quot;</span>
                       </div>
@@ -91,17 +91,15 @@ export default function Cart() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[18rem]">
+                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
                     <img
                       src="../../assets/CartImg2.jpg"
                       alt="Venus Filter Effect Concealer"
                       className="w-16 h-16 mr-4"
                     />
                     <div>
-                      <div className="">
-                        Venus Filter Effect Soft Radiance Concealer - Rich 26
-                      </div>
-                      <div className="">
+                      <div className="">Venus Filter Effect Soft</div>
+                      <div className="mt-2">
                         <b>Type:</b>{" "}
                         <span className="text-gray-500">Round</span>
                       </div>
@@ -143,7 +141,7 @@ export default function Cart() {
               </tbody>
             </table>
           </div>
-          <div className="lg:w-1/3 bg-white p-6 rounded shadow-sm">
+          <div className="lg:w-[30%] bg-white p-6 rounded shadow-sm">
             <h2 className="text-xl font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-4">
               Order Summary
             </h2>
@@ -161,7 +159,7 @@ export default function Cart() {
               <div className="bg-yellow-300 divide-y h-[2px] my-4"></div>
               <div className="flex flex-col gap-4 justify-between mb-2">
                 <div>Coupons and Discounts</div>
-                <div className="flex ml-auto">
+                <div className="flex ml-auto flex-wrap">
                   <input type="text" className="border p-1 h-10" />
                   <button className="bg-yellow-500 text-white px-6 h-10">
                     Apply
@@ -185,7 +183,9 @@ export default function Cart() {
               <p className="text-red-700 text-right text-sm py-4">
                 Excluding delievery charges
               </p>
-              <Button text={"Checkout"} />
+              <Link to="/checkout">
+                <Button text={"Checkout"} />
+              </Link>
               <div className="text-center text-gray-500 text-sm mt-6">
                 <div className="flex justify-center items-center gap-2">
                   We accept:
