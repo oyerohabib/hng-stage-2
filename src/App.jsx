@@ -23,7 +23,7 @@ function App() {
           <h1 className="text-2xl font-bold text-black">
             Beauty<span className="text-yellow-600">Home</span>
           </h1>
-          <div className="items-center border border-gray-300 w-1/2 hidden md:flex">
+          <div className="items-center border border-gray-300 lg:w-1/2 hidden md:flex">
             <input
               type="text"
               placeholder="Search products"
@@ -73,7 +73,7 @@ function App() {
               <option>High to Low</option>
             </select>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {[...Array(20)].map((_, index) => (
               <div
                 key={index}
