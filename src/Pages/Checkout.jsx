@@ -101,12 +101,14 @@ const CheckoutPage = () => {
           </div>
         </div>
         <div className="flex justify-center mt-6">
-          <button
-            className="border-[2px] rounded-md border-yellow-600 font-bold sm:px-8 px-4 sm:py-4 py-2 mt-2 
-     text-xl hover:bg-yellow-600 hover:text-white transition duration-200 lg:w-[363px]"
-          >
-            Checkout Here
-          </button>
+          <Link to="/order-success">
+            <button
+              className="border-[2px] rounded-md border-yellow-600 font-bold sm:px-8 px-4 sm:py-4 py-2 mt-2 
+            text-xl hover:bg-yellow-600 hover:text-white transition duration-200 lg:w-[363px]"
+            >
+              Checkout Here
+            </button>
+          </Link>
         </div>
       </div>
       <Subscription />
