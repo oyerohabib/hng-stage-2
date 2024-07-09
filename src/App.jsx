@@ -232,11 +232,6 @@ function App() {
                     Terms & Conditions
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-gray-600">
-                    Affiliate
-                  </a>
-                </li>
               </ul>
             </div>
             <div>
@@ -257,16 +252,6 @@ function App() {
                     Shipping info
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-gray-600">
-                    FAQs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600">
-                    My Account
-                  </a>
-                </li>
               </ul>
             </div>
             <div>
@@ -285,11 +270,6 @@ function App() {
                 <li>
                   <a href="#" className="text-gray-600">
                     Consult with an expert
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600">
-                    Refer & Earn
                   </a>
                 </li>
               </ul>
