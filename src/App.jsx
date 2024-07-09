@@ -8,6 +8,10 @@ import {
   FaStar,
   FaAngleRight,
   FaAngleLeft,
+  FaInstagram,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
 } from "react-icons/fa";
 
 function App() {
@@ -130,30 +134,44 @@ function App() {
           </div>
         </section>
 
-        <section className="bg-yellow-100 p-8 rounded-lg mt-16 flex flex-col md:flex-row items-center">
+        <div className="relative max-w-7xl mx-auto my-8 overflow-hidden rounded-md">
           <img
-            src="path/to/image.jpg"
+            src="./src/assets/Beatician.jpg"
             alt="Beautician"
-            className="w-full md:w-1/3 rounded-lg"
+            className="w-full h-64 object-cover"
           />
-          <div className="ml-8 mt-4 md:mt-0">
-            <h3 className="text-2xl font-bold mb-2">Skin Exfoil-Attention!</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet
-              mattis arcu sollicitudin sed orci morbi feugiat sed...
-            </p>
-            <button className="mt-4 text-yellow-600 font-bold">
-              Read more
-            </button>
+          <div
+            className="absolute top-0 right-0 w-4/6 h-full bg-red-700 flex items-center 
+          justify-end [clip-path:polygon(50%_0%,100%_0%,100%_100%,25%_100%)]"
+          >
+            <div className="text-left p-8 mr-12">
+              <h2 className="text-white text-2xl pl-6">Talk with a</h2>
+              <h1 className="text-yellow-500 text-7xl font-extrabold">
+                Beautician
+              </h1>
+            </div>
           </div>
-        </section>
+        </div>
+      </main>
 
-        <section className="bg-red-600 text-white p-8 rounded-lg mt-12 text-center">
-          <h3 className="text-3xl font-bold">Talk with a Beautician</h3>
-          <p className="mt-2">Get personalized advice from our experts</p>
-        </section>
+      <section className="bg-yellow-100 flex flex-col md:flex-row items-center">
+        <div className="w-1/2 px-28 mt-4 md:mt-0">
+          <h3 className="text-2xl font-bold mb-2">Skin Exfoil-Attention!</h3>
+          <p>
+            Reveal radiant skin with personalized exfoliation, Tailored to your
+            unique skin type and needs, Unlock a brighter...
+          </p>
+          <button className="mt-4 text-yellow-600 font-bold">Read more</button>
+        </div>
+        <img
+          src="./src/assets/SkinExfoli.jpg"
+          alt="Beautician"
+          className="w-full md:w-1/2"
+        />
+      </section>
 
-        <section className="bg-gray-100 p-8 rounded-lg mt-12 text-center">
+      <main className="container mx-auto px-4 py-20 flex flex-col w-1/2">
+        <section className="p-8 rounded-lg text-center">
           <h3 className="text-2xl font-bold mb-4">
             Sign up, stay informed, and get offers
           </h3>
@@ -161,33 +179,32 @@ function App() {
             Become part of our community and receive a daily dose of good vibes
             on health, beauty, and lifestyle, as well as exclusive discounts.
           </p>
-          <form className="mt-4 flex flex-col sm:flex-row justify-center">
+          <form className="mt-12 flex flex-col sm:flex-row justify-center">
             <input
               type="text"
               placeholder="Full Name"
-              className="border border-gray-300 rounded-full px-4 py-2 mx-2 mt-2 sm:mt-0"
+              className="border border-gray-300 px-4 py-2 mt-2 sm:mt-0"
             />
             <input
               type="email"
               placeholder="Email Address"
-              className="border border-gray-300 rounded-full px-4 py-2 mx-2 mt-2 sm:mt-0"
+              className="border border-gray-300 px-4 py-2 mt-2 sm:mt-0"
             />
-            <button className="bg-yellow-600 text-white rounded-full px-4 py-2 mx-2 mt-2 sm:mt-0">
+            <button className="bg-yellow-600 text-white px-12 py-2 mt-2 sm:mt-0">
               Subscribe
             </button>
           </form>
         </section>
       </main>
 
-      <footer className="bg-white py-8">
+      <footer className="bg-gray-100 py-8">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <div>
-              <h4 className="text-lg font-bold">BeautyHome</h4>
-              <p className="mt-2">
-                BeautyHome Limited is an online store that gives all of us
-                access to originality, buying and selling experience...
-              </p>
+              <h4 className="text-lg font-bold">
+                Beauty<span className="text-yellow-600">Home</span>
+              </h4>
+              <p className="mt-2">&copy; 2024</p>
             </div>
             <div>
               <h4 className="text-lg font-bold">Explore BeautyHome</h4>
@@ -269,22 +286,30 @@ function App() {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="mt-8 text-center">
-            <p>&copy; 2024 BeautyHome</p>
-            <div className="flex justify-center mt-4 space-x-4">
-              <a href="#" className="text-gray-600">
-                Facebook
-              </a>
-              <a href="#" className="text-gray-600">
-                Twitter
-              </a>
-              <a href="#" className="text-gray-600">
-                Instagram
-              </a>
-              <a href="#" className="text-gray-600">
-                LinkedIn
-              </a>
+            <div>
+              <h4 className="text-lg font-bold">Connect With Us</h4>
+              <ul className="mt-2 flex items-center gap-4">
+                <li>
+                  <a href="#" className="text-gray-600">
+                    <FaInstagram className="text-xl text-yellow-500" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600">
+                    <FaFacebookF className="text-xl text-yellow-500" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600">
+                    <FaTwitter className="text-xl text-yellow-500" />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600">
+                    <FaLinkedinIn className="text-xl text-yellow-500" />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
