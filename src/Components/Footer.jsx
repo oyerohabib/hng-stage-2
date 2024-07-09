@@ -1,4 +1,4 @@
-import { Explore, Help, QuickLinks, Socials } from "../Constants/Footer";
+import { Explores, Helps, QuickLinks, Socials } from "../Constants/Footer";
 
 export default function Footer() {
   return (
@@ -14,11 +14,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold">Explore BeautyHome</h4>
             <ul className="mt-2 space-y-2">
-              {Explore.map((exploreItem, index) => {
+              {Explores.map((explore, index) => {
                 return (
                   <li key={index}>
                     <a href="#" className="text-gray-600">
-                      {exploreItem}
+                      {explore}
                     </a>
                   </li>
                 );
@@ -28,11 +28,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold">Help & Information</h4>
             <ul className="mt-2 space-y-2">
-              {Help.map((helpItem, index) => {
+              {Helps.map((help, index) => {
                 return (
                   <li key={index}>
                     <a href="#" className="text-gray-600">
-                      {helpItem}
+                      {help}
                     </a>
                   </li>
                 );
@@ -42,11 +42,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold">Quick Links</h4>
             <ul className="mt-2 space-y-2">
-              {QuickLinks.map((quickLinksItem, index) => {
+              {QuickLinks.map((quickLink, index) => {
                 return (
                   <li key={index}>
                     <a href="#" className="text-gray-600">
-                      {quickLinksItem}
+                      {quickLink}
                     </a>
                   </li>
                 );
@@ -56,11 +56,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold">Connect With Us</h4>
             <ul className="mt-2 flex items-center gap-4">
-              {Socials.map((socialItems, index) => {
+              {Socials.map((social, index) => {
                 return (
                   <li key={index}>
                     <a href="#" className="text-gray-600">
-                      {socialItems}
+                      {<social.icon className="text-xl text-yellow-500" />}
                     </a>
                   </li>
                 );
