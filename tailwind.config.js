@@ -4,9 +4,20 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: { max: "400px" },
+        xs: "400px",
+      },
+      container: {
+        center: true,
+        padding: "1rem",
+        screens: {
+          sm: "700px", // Override max-width for 700px screen width
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+          "2xl": "1536px",
+        },
       },
     },
+    plugins: [],
   },
-  plugins: [],
 };

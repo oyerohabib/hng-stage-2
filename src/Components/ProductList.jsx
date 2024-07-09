@@ -13,7 +13,7 @@ export default function ProductList() {
           <option>High to Low</option>
         </select>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {[...Array(20)].map((_, index) => (
           <div
             key={index}
@@ -23,7 +23,7 @@ export default function ProductList() {
               <FaRegHeart className="text-xl cursor-pointer" />
             </div>
             <img
-              src="./src/assets/ProductImage.jpg"
+              src="./assets/ProductImage.jpg"
               alt="Product Image"
               className="w-full object-cover rounded-t-lg"
             />

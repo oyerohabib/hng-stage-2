@@ -2,7 +2,7 @@ export default function Beautician() {
   return (
     <div className="relative max-w-7xl mx-auto my-8 overflow-hidden rounded-md sm:block hidden">
       <img
-        src="./src/assets/Beatician.jpg"
+        src="./assets/Beatician.jpg"
         alt="Beautician"
         className="w-full h-64 object-cover"
       />

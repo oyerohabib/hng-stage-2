@@ -1,7 +1,7 @@
 export default function Subscription() {
   return (
     <main className="container mx-auto px-4 py-20 flex flex-col lg:w-1/2">
-      <section className="p-8 rounded-lg text-center">
+      <section className="p-4 text-center">
         <h3 className="text-2xl font-bold mb-4">
           Sign up, stay informed, and get offers
         </h3>
