@@ -1,24 +1,23 @@
-import Header from "./Components/Header";
-import Hero from "./Components/Hero";
-import ProductList from "./Components/ProductList";
-import Beautician from "./Components/Beautician";
-import SkinExfoil from "./Components/SkinExfoil";
-import Subscription from "./Components/Subscription";
-import Footer from "./Components/Footer";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
+import OrderSuccess from "./Pages/OrderSuccess";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <main className="container mx-auto px-4 py-8">
-        <ProductList />
-        <Beautician />
-      </main>
-      <SkinExfoil />
-      <Subscription />
-      <Footer />
-    </div>
+    <Router>
+      <>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/ordersuccess" element={<OrderSuccess />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </>
+    </Router>
   );
 }
 
