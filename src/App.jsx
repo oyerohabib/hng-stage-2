@@ -12,6 +12,7 @@ import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
+  FaClock,
 } from "react-icons/fa";
 
 function App() {
@@ -155,7 +156,7 @@ function App() {
       </main>
 
       <section className="bg-yellow-100 flex flex-col md:flex-row items-center">
-        <div className="w-1/2 px-28 mt-4 md:mt-0">
+        <div className="w-full md:w-1/2 px-8 md:px-28 mt-4 md:mt-0">
           <h3 className="text-2xl font-bold mb-2">Skin Exfoil-Attention!</h3>
           <p>
             Reveal radiant skin with personalized exfoliation, Tailored to your
@@ -163,11 +164,16 @@ function App() {
           </p>
           <button className="mt-4 text-yellow-600 font-bold">Read more</button>
         </div>
-        <img
-          src="./src/assets/SkinExfoli.jpg"
-          alt="Beautician"
-          className="w-full md:w-1/2"
-        />
+        <div className="relative w-full md:w-1/2">
+          <img
+            src="./src/assets/SkinExfoli.jpg"
+            alt="Beautician"
+            className="w-full"
+          />
+          <div className="absolute top-0 right-0 bg-yellow-500 text-xl p-4 flex items-center">
+            <FaClock className="mr-2" /> 10 mins
+          </div>
+        </div>
       </section>
 
       <main className="container mx-auto px-4 py-20 flex flex-col w-1/2">
