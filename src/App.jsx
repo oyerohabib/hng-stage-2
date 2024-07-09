@@ -65,7 +65,7 @@ function App() {
       <main className="container mx-auto px-4 py-8">
         <section>
           <h2 className="text-3xl font-bold mb-6">Products</h2>
-          <div className="mb-6 flex flex-col md:flex-row items-center gap-2">
+          <div className="mb-6 flex items-center gap-2">
             <span>Sort By: </span>
             <select className="border border-gray-300 p-2">
               <option>Most Recent</option>
@@ -107,35 +107,35 @@ function App() {
             ))}
           </div>
           <div className="flex justify-center mt-16">
-            <button className="px-4 py-2 bg-gray-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-gray-100 rounded-lg mx-1">
               <FaAngleLeft className="text-lg" />
             </button>
-            <button className="px-4 py-2 bg-black text-white rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-black text-white rounded-lg mx-1">
               1
             </button>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               2
             </button>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               3
             </button>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               4
             </button>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               5
             </button>
-            <span className="px-4 py-2">...</span>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <span className="px-2 py-1 sm:px-4 sm:py-2">...</span>
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               50
             </button>
-            <button className="px-4 py-2 bg-yellow-100 rounded-lg mx-1">
+            <button className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1">
               <FaAngleRight className="text-lg" />
             </button>
           </div>
         </section>
 
-        <div className="relative max-w-7xl mx-auto my-8 overflow-hidden rounded-md">
+        <div className="relative max-w-7xl mx-auto my-8 overflow-hidden rounded-md sm:block hidden">
           <img
             src="./src/assets/Beatician.jpg"
             alt="Beautician"
@@ -145,9 +145,11 @@ function App() {
             className="absolute top-0 right-0 w-4/6 h-full bg-red-700 flex items-center 
           justify-end [clip-path:polygon(50%_0%,100%_0%,100%_100%,25%_100%)]"
           >
-            <div className="text-left p-8 mr-12">
-              <h2 className="text-white text-2xl pl-6">Talk with a</h2>
-              <h1 className="text-yellow-500 text-7xl font-extrabold">
+            <div className="text-left p-8 mr-4 lg:mr-12">
+              <h2 className="text-white text-1xl lg:text-2xl pl-6">
+                Talk with a
+              </h2>
+              <h1 className="text-yellow-500 text-4xl lg:text-6xl font-extrabold">
                 Beautician
               </h1>
             </div>
@@ -156,7 +158,7 @@ function App() {
       </main>
 
       <section className="bg-yellow-100 flex flex-col md:flex-row items-center">
-        <div className="w-full md:w-1/2 px-8 md:px-28 mt-4 md:mt-0">
+        <div className="w-full md:w-1/2 p-12 md:px-28 mt-4 md:mt-0">
           <h3 className="text-2xl font-bold mb-2">Skin Exfoil-Attention!</h3>
           <p>
             Reveal radiant skin with personalized exfoliation, Tailored to your
@@ -164,19 +166,19 @@ function App() {
           </p>
           <button className="mt-4 text-yellow-600 font-bold">Read more</button>
         </div>
-        <div className="relative w-full md:w-1/2">
+        <div className="relative w-full h-full md:w-1/2">
           <img
             src="./src/assets/SkinExfoli.jpg"
             alt="Beautician"
-            className="w-full"
+            className="w-full object-cover"
           />
-          <div className="absolute top-0 right-0 bg-yellow-500 text-xl p-4 flex items-center">
+          <div className="absolute top-0 right-0 bg-yellow-500 text-xl p-2 sm:p-4 flex items-center">
             <FaClock className="mr-2" /> 10 mins
           </div>
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-20 flex flex-col w-1/2">
+      <main className="container mx-auto px-4 py-20 flex flex-col lg:w-1/2">
         <section className="p-8 rounded-lg text-center">
           <h3 className="text-2xl font-bold mb-4">
             Sign up, stay informed, and get offers
