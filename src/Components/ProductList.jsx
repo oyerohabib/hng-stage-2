@@ -1,5 +1,6 @@
 import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
+import Button from "./Button";
 
 export default function ProductList() {
   return (
@@ -39,9 +40,7 @@ export default function ProductList() {
                 <FaRegStar />
               </div>
               <p className="text-yellow-600 font-bold">N4,999</p>
-              <button className="border-[3px] rounded-lg border-yellow-600 font-bold px-4 py-2 mt-2">
-                Add to Bag
-              </button>
+              <Button text={"Add to Cart"} />
             </div>
           </div>
         ))}
