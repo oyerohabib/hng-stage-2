@@ -13,7 +13,7 @@ export default function SkinExfoil() {
       </div>
       <div className="relative w-full h-full md:w-1/2">
         <img
-          src="./src/assets/SkinExfoli.jpg"
+          src="./assets/SkinExfoli.jpg"
           alt="Beautician"
           className="w-full object-cover"
         />
