@@ -13,11 +13,13 @@ export default function Subscription() {
           <input
             type="text"
             placeholder="Full Name"
+            required
             className="border border-gray-300 px-4 py-2 mt-2 sm:mt-0"
           />
           <input
             type="email"
             placeholder="Email Address"
+            required
             className="border border-gray-300 px-4 py-2 mt-2 sm:mt-0"
           />
           <button className="bg-yellow-600 text-white px-12 py-2 mt-2 sm:mt-0">
