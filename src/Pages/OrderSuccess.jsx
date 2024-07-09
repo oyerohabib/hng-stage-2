@@ -29,7 +29,7 @@ export default function OrderSuccess() {
           <FaAngleRight className="inline text-gray-500" />{" "}
           <span className="ml-2">Order Success</span>
         </nav>
-        <div className="flex items-center justify-center p-5">
+        <div className="flex items-center justify-center sm:p-5">
           <div className="bg-white p-6 w-full">
             <div className="max-w-2xl mx-auto">
               <div className="flex items-center justify-center mb-4">
@@ -53,38 +53,81 @@ export default function OrderSuccess() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2">
-              <div className="bg-yellow-50 py-20 px-12">
+              <div className="bg-yellow-50 py-10 sm:py-20 px-4 sm:px-12">
                 <h3 className="text-4xl font-semibold mb-10">Order Details</h3>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center">
-                    <img
-                      src="https://via.placeholder.com/50"
-                      alt="Product"
-                      className="w-12 h-12 mr-4"
-                    />
-                    <div>
-                      <h4 className="font-semibold">
-                        Venus Eye Pencil Collection - 4-in-1 Pack
-                      </h4>
-                      <p className="text-sm text-gray-600">Size: 5&quot;</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-semibold">₦ 15,000</p>
-                    <p className="text-sm text-gray-600">Quantity: 3</p>
-                  </div>
-                </div>
-                <div className="flex justify-between">
-                  <p className="text-gray-600">Subtotal (NGN):</p>
-                  <p className="font-semibold">₦ 1.00</p>
-                </div>
-                <div className="flex justify-between">
-                  <p className="text-gray-600">VAT 7.5%:</p>
-                  <p className="font-semibold">₦ 0.08</p>
-                </div>
-                <div className="flex justify-between font-bold border-t pt-2 mt-2">
-                  <p>Total:</p>
-                  <p>₦ 15,000.08</p>
+                <div className="overflow-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead>
+                      <tr>
+                        <th className="py-3 text-left text-xs font-medium tracking-wider">
+                          Item details
+                        </th>
+                        <th className="py-3 text-center text-xs font-medium tracking-wider">
+                          Quantity
+                        </th>
+                        <th className="py-3 text-center text-xs font-medium tracking-wider">
+                          Item price
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      <tr>
+                        <td className="px-6 py-4 whitespace-wrap flex items-center">
+                          <img
+                            src="../../assets/ProductImage.jpg"
+                            alt="Venus Eye Pencil Collection"
+                            className="w-16 h-16 mr-4"
+                          />
+                          <div>
+                            <div>Venus Eye Pencil Collection</div>
+                            <div className="mt-2">
+                              <b>Size: </b>
+                              <span className="text-gray-500">5&quot;</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>3</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p className="font-bold">₦ 15,000</p>
+                        </td>
+                      </tr>
+                      <tr className="text-gray-500">
+                        <td className="px-6 py-4 whitespace-wrap flex items-center">
+                          {" "}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>Subtotal (NGN)</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p className="">₦ 1.00</p>
+                        </td>
+                      </tr>
+                      <tr className="text-gray-500">
+                        <td className="px-6 py-4 whitespace-wrap flex items-center">
+                          {" "}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>VAT 7.5%</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p className="">₦ 0.08</p>
+                        </td>
+                      </tr>
+                      <tr className="font-bold">
+                        <td className="px-6 py-4 whitespace-wrap flex items-center">
+                          {" "}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>Total:</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>₦ 15,000.08</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
