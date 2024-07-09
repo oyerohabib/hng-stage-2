@@ -9,7 +9,7 @@ export default function OrderSuccess() {
   return (
     <>
       <Header />
-      <div className="container mx-auto p-4 mt-8">
+      <div className="container mx-auto p-4 mt-4">
         <nav className="mb-4">
           <Link to="/" className="text-gray-500 mr-2hover:underline mr-2">
             Home
