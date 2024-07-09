@@ -10,7 +10,7 @@ export default function Cart() {
   return (
     <>
       <Header />
-      <div className="container mx-auto p-4 my-8">
+      <div className="container mx-auto p-4 my-4">
         <nav className="mb-4">
           <Link to="/" className="hover:underline">
             <span className="text-gray-500 mr-2">Home</span>

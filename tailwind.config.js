@@ -17,6 +17,9 @@ module.exports = {
           "2xl": "1536px",
         },
       },
+      backgroundImage: {
+        heroImage: "url(./assets/HeroImage.jpg)",
+      },
     },
     plugins: [],
   },
