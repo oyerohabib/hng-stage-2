@@ -52,8 +52,8 @@ export default function OrderSuccess() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2">
-              <div className="bg-yellow-50 py-10 sm:py-20 px-4 sm:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="bg-[#fefff8] py-10 sm:py-20 px-4 sm:px-12">
                 <h3 className="text-4xl font-semibold mb-10">Order Details</h3>
                 <div className="overflow-auto">
                   <table className="min-w-full divide-y divide-gray-200">
@@ -131,7 +131,7 @@ export default function OrderSuccess() {
                 </div>
               </div>
 
-              <div className="bg-yellow-100 py-20 px-12">
+              <div className="bg-yellow-100 py-20 px-12 mt-8 lg:rounded-none rounded-xl">
                 <h3 className="text-lg font-semibold mb-2">Order Summary</h3>
                 <div className="text-gray-500">
                   <p className="text-sm mb-2">Order ID: 7152559274</p>
@@ -139,7 +139,7 @@ export default function OrderSuccess() {
                   <p className="text-sm mb-2">Order Total: ₦ 1.07</p>
                 </div>
                 <h3 className="text-lg font-semibold">Payment Method</h3>
-                <p className="text-sm mb-2 text-gray-500">Paystack</p>
+                <p className="mb-2 text-gray-500">Paystack</p>
                 <div className="mt-6">
                   <p className="mb-1">
                     <strong>Note:</strong>{" "}
