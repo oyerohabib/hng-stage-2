@@ -2,7 +2,7 @@ import Header from "../Components/Header";
 import Subscription from "../Components/Subscription";
 import Footer from "../Components/Footer";
 import Button from "../Components/Button";
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiMastercardFill, RiPaypalFill, RiVisaFill } from "react-icons/ri";
 
@@ -21,7 +21,7 @@ export default function Cart() {
         <h1 className="text-5xl mb-6">Cart</h1>
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="lg:w-[70%] bg-white p-6 rounded shadow-sm overflow-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="min-w-full divide-y divide-gray-200 mb-6">
               <thead className="bg-yellow-100">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
@@ -140,6 +140,13 @@ export default function Cart() {
                 </tr>
               </tbody>
             </table>
+
+            <Link to="/" className="hidden lg:block">
+              <button className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 mb-4 flex items-center gap-1 rounded-md">
+                <FaAngleLeft className="inline" />
+                Continue Shopping
+              </button>
+            </Link>
           </div>
           <div className="lg:w-[30%] bg-white p-6 rounded shadow-sm">
             <h2 className="text-xl font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-4">
@@ -183,6 +190,12 @@ export default function Cart() {
               <p className="text-red-700 text-right text-sm py-4">
                 Excluding delievery charges
               </p>
+              <Link to="/" className="block lg:hidden">
+                <button className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 my-6 flex items-center gap-1 rounded-md">
+                  <FaAngleLeft className="inline" />
+                  Continue Shopping
+                </button>
+              </Link>
               <Link to="/checkout">
                 <Button text={"Checkout"} />
               </Link>
