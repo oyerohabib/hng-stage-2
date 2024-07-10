@@ -2,10 +2,10 @@ export default function Subscription() {
   return (
     <main className="container mx-auto px-4 py-20 flex flex-col lg:w-1/2">
       <section className="p-4 text-center">
-        <h3 className="text-2xl font-bold mb-4">
+        <h3 className="text-4xl font-bold mb-8">
           Sign up, stay informed, and get offers
         </h3>
-        <p>
+        <p className="text-lg">
           Become part of our community and receive a daily dose of good vibes on
           health, beauty, and lifestyle, as well as exclusive discounts.
         </p>
