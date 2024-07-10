@@ -4,6 +4,13 @@ import Button from "./Button";
 import { Products } from "../Constants/Products";
 import { Link } from "react-router-dom";
 
+const renderStarReviews = (rating) => {
+  const totalStars = 5;
+  const filledStars = Array(rating).fill(<FaStar />);
+  const emptyStars = Array(totalStars - rating).fill(<FaRegStar />);
+  return [...filledStars, ...emptyStars];
+};
+
 export default function ProductList() {
   return (
     <section>
@@ -35,11 +42,7 @@ export default function ProductList() {
             <div className="mt-4 flex flex-col gap-4 flex-grow">
               <h3 className="text-xl">{product.name}</h3>
               <div className="flex text-yellow-600">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaRegStar />
-                <FaRegStar />
+                {renderStarReviews(product.stars)}
               </div>
               <p className="text-yellow-600 font-bold">{product.price}</p>
               <div className="mt-auto">
