@@ -18,7 +18,7 @@ module.exports = {
         },
       },
       backgroundImage: {
-        heroImage: "url(./assets/HeroImage.jpg)",
+        heroImage: "url(/assets/HeroImage.jpg)",
       },
     },
     plugins: [],
