@@ -2,6 +2,7 @@ import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
 import { Products } from "../Constants/Products";
+import { Link } from "react-router-dom";
 
 export default function ProductList() {
   return (
@@ -42,7 +43,9 @@ export default function ProductList() {
               </div>
               <p className="text-yellow-600 font-bold">{product.price}</p>
               <div className="mt-auto">
-                <Button text={"Add to Cart"} />
+                <Link to="/cart">
+                  <Button text={"Add to Cart"} />
+                </Link>
               </div>
             </div>
           </div>
