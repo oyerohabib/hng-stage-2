@@ -2,14 +2,16 @@ import { FaClock } from "react-icons/fa";
 
 export default function SkinExfoil() {
   return (
-    <section className="bg-yellow-100 flex flex-col md:flex-row items-center">
+    <section className="bg-[#F9F1D1] flex flex-col md:flex-row items-center">
       <div className="w-full md:w-1/2 p-12 md:px-28 mt-4 md:mt-0">
-        <h3 className="text-2xl font-bold mb-2">Skin Exfoil-Attention!</h3>
-        <p>
+        <h3 className="sm:text-4xl text-2xl mb-4 sm:mb-8">
+          Skin Exfoil-Attention!
+        </h3>
+        <p className="sm:text-lg">
           Reveal radiant skin with personalized exfoliation, Tailored to your
           unique skin type and needs, Unlock a brighter...
         </p>
-        <button className="mt-4 text-yellow-600 font-bold">Read more</button>
+        <button className="mt-4 sm:mt-8 underline">Read more</button>
       </div>
       <div className="relative w-full h-full md:w-1/2">
         <img
