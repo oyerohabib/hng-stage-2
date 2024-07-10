@@ -20,23 +20,23 @@ export default function Cart() {
         </nav>
         <h1 className="text-5xl mb-6">Cart</h1>
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="lg:w-[70%] bg-white p-6 rounded shadow-sm overflow-auto">
+          <div className="lg:w-[70%] bg-white p-6 overflow-auto">
             <table className="min-w-full divide-y divide-gray-200 mb-6">
-              <thead className="bg-yellow-100">
+              <thead className="bg-[#F9F1D1]">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium tracking-wider">
                     Item details
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-medium tracking-wider">
                     Quantity
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-medium tracking-wider">
                     Allow Substitution
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-medium tracking-wider">
                     Item price
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-medium tracking-wider">
                     Action
                   </th>
                 </tr>
@@ -148,22 +148,22 @@ export default function Cart() {
               </button>
             </Link>
           </div>
-          <div className="lg:w-[30%] bg-white p-6 rounded shadow-sm">
-            <h2 className="text-xl font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-4">
+          <div className="lg:w-[30%] bg-white p-6">
+            <h2 className="text-lg font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-2">
               Order Summary
             </h2>
             <div className="p-4">
               <div className="flex justify-end text-xl font-semibold">
                 <div>2 Items</div>
               </div>
-              <div className="bg-yellow-300 divide-y h-[2px] my-4"></div>
+              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex flex-col justify-between mb-2">
                 <div className="text-xl mb-2">Delivery Charges:</div>
                 <div className="text-gray-500 self-end">
                   Add your Delivery address at checkout to see delivery charges
                 </div>
               </div>
-              <div className="bg-yellow-300 divide-y h-[2px] my-4"></div>
+              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex flex-col gap-4 justify-between mb-2">
                 <div>Coupons and Discounts</div>
                 <div className="flex ml-auto flex-wrap">
@@ -173,7 +173,7 @@ export default function Cart() {
                   </button>
                 </div>
               </div>
-              <div className="bg-yellow-300 divide-y h-[2px] my-4"></div>
+              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex justify-between font-bold mb-2">
                 <div>Subtotal</div>
                 <div>₦ 25,000</div>
@@ -182,7 +182,7 @@ export default function Cart() {
                 <div>Savings</div>
                 <div>₦ 2,000</div>
               </div>
-              <div className="bg-yellow-300 divide-y h-[2px] my-4"></div>
+              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex justify-between font-bold text-xl">
                 <div>Total (2 items)</div>
                 <div>₦ 23,000</div>
