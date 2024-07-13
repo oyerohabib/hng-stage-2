@@ -5,7 +5,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-export const Explores = ["Blog", "Privacy Policy", "Terms & Conditions"];
+export const Explores = ["About us", "Privacy Policy", "Terms & Conditions"];
 export const Helps = ["Track my order", "View Cart", "Shipping info"];
 export const QuickLinks = [
   "Become Seller",
