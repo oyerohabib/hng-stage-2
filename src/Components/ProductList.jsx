@@ -4,6 +4,7 @@ import Pagination from "./Pagination";
 import Button from "./Button";
 import { Products } from "../Constants/Products";
 import { useCart } from "../hooks/useCart";
+import { formatPrice } from "../utils/formatCurrency";
 
 const renderStarReviews = (rating) => {
   const totalStars = 5;
@@ -17,7 +18,7 @@ const renderStarReviews = (rating) => {
 };
 
 export default function ProductList() {
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, addToCart, handleRemoveItem } = useCart();
 
   const isInCart = (productId) => {
     return cartItems.some((item) => item.id === productId);
@@ -25,7 +26,7 @@ export default function ProductList() {
 
   const handleCartAction = (product) => {
     if (isInCart(product.id)) {
-      removeFromCart(product.id);
+      handleRemoveItem(product.id);
     } else {
       addToCart(product);
     }
@@ -63,7 +64,9 @@ export default function ProductList() {
               <div className="flex text-yellow-600">
                 {renderStarReviews(product.stars)}
               </div>
-              <p className="text-yellow-600 font-bold">{product.price}</p>
+              <p className="text-yellow-600 font-bold">
+                {formatPrice(product.price)}
+              </p>
               <div className="mt-auto">
                 <Button
                   text={isInCart(product.id) ? "Remove" : "Add to Cart"}

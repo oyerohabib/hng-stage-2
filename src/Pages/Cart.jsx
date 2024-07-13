@@ -5,8 +5,18 @@ import Button from "../Components/Button";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiMastercardFill, RiPaypalFill, RiVisaFill } from "react-icons/ri";
+import { useCart } from "../hooks/useCart";
+import { formatPrice } from "../utils/formatCurrency";
 
 export default function Cart() {
+  const {
+    cartItems,
+    handleRemoveItem,
+    incrementQuantity,
+    decrementQuantity,
+    calculateTotalPrice,
+  } = useCart();
+
   return (
     <>
       <Header />
@@ -39,44 +49,78 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                <tr>
-                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
-                    <img
-                      src="../../assets/ProductImage.jpg"
-                      alt="Venus Eye Pencil Collection"
-                      className="w-16 h-16 mr-4"
-                    />
-                    <div>
-                      <div>Venus Eye Pencil Collection</div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <input
-                      type="number"
-                      value="3"
-                      className="w-12 text-center border p-2"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
-                    <div className="font-bold">₦ 15,000</div>
-                    <div className="text-sm">
-                      <span className="text-gray-500">Unit price </span>
-                      <span className="font-bold">₦5,000</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                    <div>
-                      <a href="#" className="text-gray-500 hover:underline">
-                        Remove item
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" className="text-yellow-500 hover:underline">
-                        Saved for later
-                      </a>
-                    </div>
-                  </td>
-                </tr>
+                {cartItems.length > 0 ? (
+                  cartItems.map((product, index) => {
+                    return (
+                      <tr key={index}>
+                        <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
+                          <img
+                            src={product.image}
+                            alt="Venus Eye Pencil Collection"
+                            className="w-16 h-16 mr-4"
+                          />
+                          <div>
+                            <div>{product.name}</div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <div className="flex items-center justify-center">
+                            <button
+                              onClick={() => decrementQuantity(product.id)}
+                            >
+                              -
+                            </button>
+                            <span className="text-center border px-2 mx-2">
+                              {product.quantity}
+                            </span>
+                            <button
+                              onClick={() => incrementQuantity(product.id)}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right">
+                          <div className="font-bold">
+                            {formatPrice(
+                              parseFloat(product.price) * product.quantity
+                            )}
+                          </div>
+                          <div className="text-sm">
+                            <span className="text-gray-500">Unit price </span>
+                            <span className="font-bold">
+                              {formatPrice(product.price)}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
+                          <div>
+                            <button
+                              onClick={() => handleRemoveItem(product.id)}
+                              className="text-gray-500 hover:underline"
+                            >
+                              Remove item
+                            </button>
+                          </div>
+                          <div>
+                            <a
+                              href="#"
+                              className="text-yellow-500 hover:underline"
+                            >
+                              Saved for later
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td className="flex p-2 text-lg">
+                      No Item Available in Cart
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
 
@@ -91,11 +135,11 @@ export default function Cart() {
             <h2 className="text-lg font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-2">
               Order Summary
             </h2>
-            <div className="p-4">
-              <div className="flex justify-end text-xl font-semibold">
-                <div>2 Items</div>
-              </div>
-              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
+            <div className="px-4">
+              {/* <div className="flex justify-end text-xl font-semibold">
+                <div>{cartItemCount} Items</div>
+              </div> */}
+              {/* <div className="bg-yellow-500 divide-y h-[1px] my-4"></div> */}
               <div className="flex flex-col justify-between mb-2">
                 <div className="text-xl mb-2">Delivery Charges:</div>
                 <div className="text-gray-500 self-end">
@@ -112,19 +156,19 @@ export default function Cart() {
                   </button>
                 </div>
               </div>
-              <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
-              <div className="flex justify-between font-bold mb-2">
+              {/* <div className="bg-yellow-500 divide-y h-[1px] my-4"></div> */}
+              {/* <div className="flex justify-between font-bold mb-2">
                 <div>Subtotal</div>
                 <div>₦ 25,000</div>
-              </div>
-              <div className="flex justify-between text-sm text-gray-500 mb-2">
+              </div> */}
+              {/* <div className="flex justify-between text-sm text-gray-500 mb-2">
                 <div>Savings</div>
                 <div>₦ 2,000</div>
-              </div>
+              </div> */}
               <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex justify-between font-bold text-xl">
-                <div>Total (2 items)</div>
-                <div>₦ 23,000</div>
+                <div>Total ({cartItems.length} items)</div>
+                <div>₦ {calculateTotalPrice()}</div>
               </div>
               <p className="text-red-700 text-right text-sm py-4">
                 Excluding delievery charges

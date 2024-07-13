@@ -2,8 +2,23 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 export const useCart = () => {
-  const { cartItems, addToCart, cartItemCount, removeFromCart } =
-    useContext(CartContext);
+  const {
+    cartItems,
+    addToCart,
+    handleRemoveItem,
+    setCartItems,
+    incrementQuantity,
+    decrementQuantity,
+    calculateTotalPrice,
+  } = useContext(CartContext);
 
-  return { cartItems, addToCart, cartItemCount, removeFromCart };
+  return {
+    cartItems,
+    addToCart,
+    handleRemoveItem,
+    setCartItems,
+    incrementQuantity,
+    decrementQuantity,
+    calculateTotalPrice,
+  };
 };
