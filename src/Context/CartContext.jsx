@@ -1,10 +1,30 @@
 /* eslint-disable react/prop-types */
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  // Define getCartItems function to retrieve cart items from localStorage
+  const getCartItems = () => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  };
+
+  // Initialize cartItems state with the result of getCartItems function
+  const [cartItems, setCartItems] = useState(getCartItems());
+
+  // Load cart items from localStorage on component mount
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  // Save cart items to localStorage whenever cartItems state changes
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]); // Triggered whenever cartItems state changes
 
   const addToCart = (productToAdd) => {
     // Check if the product is already in cart
