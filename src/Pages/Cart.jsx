@@ -30,9 +30,6 @@ export default function Cart() {
                   <th className="px-6 py-3 text-center text-xs font-medium tracking-wider">
                     Quantity
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium tracking-wider">
-                    Allow Substitution
-                  </th>
                   <th className="px-6 py-3 text-right text-xs font-medium tracking-wider">
                     Item price
                   </th>
@@ -51,10 +48,6 @@ export default function Cart() {
                     />
                     <div>
                       <div>Venus Eye Pencil Collection</div>
-                      <div className="mt-2">
-                        <b>Size: </b>
-                        <span className="text-gray-500">5&quot;</span>
-                      </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center">
@@ -64,66 +57,12 @@ export default function Cart() {
                       className="w-12 text-center border p-2"
                     />
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox rounded-0 border-yellow-500"
-                    />
-                  </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
                     <div className="font-bold">₦ 15,000</div>
                     <div className="text-sm">
                       <span className="text-gray-500">Unit price </span>
                       <span className="font-bold">₦5,000</span>
                     </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                    <div>
-                      <a href="#" className="text-gray-500 hover:underline">
-                        Remove item
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#" className="text-yellow-500 hover:underline">
-                        Saved for later
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
-                    <img
-                      src="../../assets/CartImg2.jpg"
-                      alt="Venus Filter Effect Concealer"
-                      className="w-16 h-16 mr-4"
-                    />
-                    <div>
-                      <div className="">Venus Filter Effect Soft</div>
-                      <div className="mt-2">
-                        <b>Type:</b>{" "}
-                        <span className="text-gray-500">Round</span>
-                      </div>
-                      <div className="">
-                        <b>Color:</b>{" "}
-                        <span className="text-gray-500">Olga Orange</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <input
-                      type="number"
-                      value="1"
-                      className="w-12 text-center border p-2"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox rounded-0 border-yellow-500"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
-                    <div className="font-bold">₦ 10,000</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                     <div>
