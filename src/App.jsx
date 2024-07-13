@@ -5,27 +5,22 @@ import Checkout from "./Pages/Checkout";
 import OrderSuccess from "./Pages/OrderSuccess";
 import NotFound from "./Pages/NotFound";
 import ScrollToTop from "./Components/ScrollToTop";
-import { useState } from "react";
+import { CartProvider } from "./Context/CartContext";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
-  console.log(cartItems);
-
   return (
     <Router>
       <>
         <ScrollToTop />
-        <Routes>
-          <Route exact path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CartProvider>
       </>
     </Router>
   );

@@ -7,13 +7,13 @@ import SkinExfoil from "../Components/SkinExfoil";
 import Subscription from "../Components/Subscription";
 import Footer from "../Components/Footer";
 
-function Home({ addToCart }) {
+function Home() {
   return (
     <div className="App">
       <Header />
       <Hero />
       <main className="container mx-auto px-4 py-8">
-        <ProductList addToCart={addToCart} />
+        <ProductList />
         <Beautician />
       </main>
       <SkinExfoil />
