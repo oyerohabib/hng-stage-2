@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Header from "../Components/Header";
 import Hero from "../Components/Hero";
 import ProductList from "../Components/ProductList";
@@ -6,13 +7,13 @@ import SkinExfoil from "../Components/SkinExfoil";
 import Subscription from "../Components/Subscription";
 import Footer from "../Components/Footer";
 
-function Home() {
+function Home({ addToCart }) {
   return (
     <div className="App">
       <Header />
       <Hero />
       <main className="container mx-auto px-4 py-8">
-        <ProductList />
+        <ProductList addToCart={addToCart} />
         <Beautician />
       </main>
       <SkinExfoil />

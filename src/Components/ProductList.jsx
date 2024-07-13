@@ -1,17 +1,21 @@
+/* eslint-disable react/prop-types */
 import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
 import { Products } from "../Constants/Products";
-import { Link } from "react-router-dom";
 
 const renderStarReviews = (rating) => {
   const totalStars = 5;
-  const filledStars = Array(rating).fill(<FaStar />);
-  const emptyStars = Array(totalStars - rating).fill(<FaRegStar />);
+  const filledStars = Array(rating)
+    .fill()
+    .map((_, index) => <FaStar key={`star-filled-${index}`} />);
+  const emptyStars = Array(totalStars - rating)
+    .fill()
+    .map((_, index) => <FaRegStar key={`star-empty-${index}`} />);
   return [...filledStars, ...emptyStars];
 };
 
-export default function ProductList() {
+export default function ProductList({ addToCart }) {
   return (
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
@@ -26,9 +30,9 @@ export default function ProductList() {
         </select>
       </div>
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {Products.map((product, index) => (
+        {Products.map((product) => (
           <div
-            key={index}
+            key={product.id}
             className="flex bg-white shadow-md rounded-lg p-4 relative flex-col"
           >
             <div className="absolute top-8 right-8 text-yellow-500">
@@ -46,9 +50,10 @@ export default function ProductList() {
               </div>
               <p className="text-yellow-600 font-bold">{product.price}</p>
               <div className="mt-auto">
-                <Link to="/cart">
-                  <Button text={"Add to Cart"} />
-                </Link>
+                <Button
+                  text={"Add to Cart"}
+                  onClick={() => addToCart(product)}
+                />
               </div>
             </div>
           </div>
