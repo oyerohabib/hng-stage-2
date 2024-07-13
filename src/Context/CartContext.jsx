@@ -43,6 +43,7 @@ export const CartProvider = ({ children }) => {
       setCartItems([...cartItems, updatedProductToAdd]);
     }
   };
+  console.log(cartItems);
 
   const handleRemoveItem = (productId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== productId);

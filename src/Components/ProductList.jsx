@@ -52,7 +52,7 @@ export default function ProductList() {
             name: item.name,
             image:
               item.photos && item.photos.length > 0
-                ? item.photos[0].url
+                ? `https://api.timbu.cloud/images/${item.photos[0].url}`
                 : "../../assets/ProductItems/pencils.jpg",
             price:
               item.current_price && item.current_price[0].NGN[0]
