@@ -3,7 +3,7 @@ import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
 import { Products } from "../Constants/Products";
-import { useCart } from "../Context/CartContext";
+import { useCart } from "../hooks/useCart";
 
 const renderStarReviews = (rating) => {
   const totalStars = 5;
@@ -17,7 +17,20 @@ const renderStarReviews = (rating) => {
 };
 
 export default function ProductList() {
-  const { addToCart } = useCart();
+  const { cartItems, addToCart, removeFromCart } = useCart();
+
+  const isInCart = (productId) => {
+    return cartItems.some((item) => item.id === productId);
+  };
+
+  const handleCartAction = (product) => {
+    if (isInCart(product.id)) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
   return (
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
@@ -53,8 +66,8 @@ export default function ProductList() {
               <p className="text-yellow-600 font-bold">{product.price}</p>
               <div className="mt-auto">
                 <Button
-                  text={"Add to Cart"}
-                  onClick={() => addToCart(product)}
+                  text={isInCart(product.id) ? "Remove" : "Add to Cart"}
+                  onClick={() => handleCartAction(product)}
                 />
               </div>
             </div>

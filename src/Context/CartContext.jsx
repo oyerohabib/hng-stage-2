@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState, useContext, createContext } from "react";
+import { useState, createContext } from "react";
 
-const CartContext = createContext();
-
-export const useCart = () => useContext(CartContext);
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -11,12 +9,17 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
-  console.log(cartItems);
+
+  const removeFromCart = (productId) => {
+    setCartItems(cartItems.filter((item) => item.id !== productId));
+  };
 
   const cartItemCount = cartItems.length;
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, cartItemCount }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, cartItemCount }}
+    >
       {children}
     </CartContext.Provider>
   );

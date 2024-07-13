@@ -3,8 +3,11 @@ import { RiHome2Line } from "react-icons/ri";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 export default function Header() {
+  const { cartItemCount } = useCart();
+  console.log(cartItemCount);
   return (
     <>
       <header className="bg-white">
@@ -37,9 +40,14 @@ export default function Header() {
               <FaRegHeart className="text-base text-yellow-600" />
               <span>Wishlist</span>
             </Link>
-            <Link to="/cart" className="hidden md:flex items-center space-x-1">
-              <MdOutlineShoppingCart className="text-base text-yellow-600" />
-              <span>Cart</span>
+            <Link to="/cart" className="flex items-center space-x-1">
+              <div className="inline relative">
+                <MdOutlineShoppingCart className="text-2xl text-yellow-600" />
+                <span className="bg-yellow-600 text-white text-xs rounded-full px-1 absolute -top-1 -right-1">
+                  {cartItemCount}
+                </span>
+              </div>
+              <span className="ml-1">Cart</span>
             </Link>
             <Link
               to="/wishlist"
