@@ -2,9 +2,10 @@
 import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
-import { Products } from "../Constants/Products";
+// import { Products } from "../Constants/Products";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
+import { useEffect, useState } from "react";
 
 const renderStarReviews = (rating) => {
   const totalStars = 5;
@@ -32,6 +33,36 @@ export default function ProductList() {
     }
   };
 
+  // Logic handling product response from Timbu API
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=f79b9b80692d4c528019e02d843e7329&reverse_sort=false&page=1&size=10&Appid=QORLYEM2HICIBI8&Apikey=bd7863eb220049cd9850e05163a7cc0220240713223453586306`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.items) {
+          const formattedProducts = data.items.map((item) => ({
+            id: item.id,
+            name: item.name,
+            image:
+              item.photos && item.photos.length > 0
+                ? item.photos[0].url
+                : "../../assets/ProductItems/pencils.jpg",
+            price:
+              item.current_price && item.current_price[0].NGN[0]
+                ? parseFloat(item.current_price[0].NGN[0])
+                : 0,
+            stars: item.stars || 4,
+          }));
+          setProducts(formattedProducts);
+        }
+      })
+      .catch((error) => console.error("Fetch failed:", error.message));
+  }, []);
+
   return (
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
@@ -46,7 +77,7 @@ export default function ProductList() {
         </select>
       </div>
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {Products.map((product) => (
+        {products.map((product) => (
           <div
             key={product.id}
             className="flex bg-white shadow-md rounded-lg p-4 relative flex-col"
