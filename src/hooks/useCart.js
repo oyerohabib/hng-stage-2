@@ -9,7 +9,8 @@ export const useCart = () => {
     setCartItems,
     incrementQuantity,
     decrementQuantity,
-    calculateTotalPrice,
+    calculateTotal,
+    clearCart,
   } = useContext(CartContext);
 
   return {
@@ -19,6 +20,7 @@ export const useCart = () => {
     setCartItems,
     incrementQuantity,
     decrementQuantity,
-    calculateTotalPrice,
+    calculateTotal,
+    clearCart,
   };
 };

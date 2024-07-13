@@ -7,7 +7,9 @@ import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
 
 const CheckoutPage = () => {
-  const { cartItems, calculateTotalPrice } = useCart();
+  const { cartItems, calculateTotal } = useCart();
+  const { totalPrice, totalItems } = calculateTotal();
+
   return (
     <>
       <Header />
@@ -71,7 +73,7 @@ const CheckoutPage = () => {
             <div className="flex justify-between items-center py-4 px-6">
               <span className="text-3xl">Your Cart</span>
               <span className="font-bold text-2xl">
-                {cartItems.length} {cartItems.length > 1 ? "items" : "item"}
+                {totalItems} {cartItems.length > 1 ? "items" : "item"}
               </span>
             </div>
             <div className="text-gray-500">
@@ -111,7 +113,7 @@ const CheckoutPage = () => {
               </div> */}
               <div className="flex justify-between font-bold text-xl py-4 border-t px-6 text-black">
                 <div>TOTAL</div>
-                <div>{formatPrice(calculateTotalPrice())}</div>
+                <div>{formatPrice(totalPrice)}</div>
               </div>
             </div>
           </div>

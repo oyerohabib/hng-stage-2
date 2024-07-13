@@ -14,8 +14,11 @@ export default function Cart() {
     handleRemoveItem,
     incrementQuantity,
     decrementQuantity,
-    calculateTotalPrice,
+    calculateTotal,
+    clearCart,
   } = useCart();
+
+  const { totalPrice, totalItems } = calculateTotal();
 
   return (
     <>
@@ -124,12 +127,20 @@ export default function Cart() {
               </tbody>
             </table>
 
-            <Link to="/" className="hidden lg:block">
-              <button className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 mb-4 flex items-center gap-1 rounded-md">
-                <FaAngleLeft className="inline" />
-                Continue Shopping
+            <div className="flex justify-between">
+              <Link to="/" className="">
+                <button className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 flex items-center gap-1 rounded-md">
+                  <FaAngleLeft className="inline" />
+                  Continue Shopping
+                </button>
+              </Link>
+              <button
+                className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 flex items-center gap-1 rounded-md"
+                onClick={clearCart}
+              >
+                Clear Cart
               </button>
-            </Link>
+            </div>
           </div>
           <div className="lg:w-[30%] bg-white p-6">
             <h2 className="text-lg font-bold mb-4 rounded-t-md bg-yellow-500 text-white p-2">
@@ -168,20 +179,13 @@ export default function Cart() {
               <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex justify-between font-bold text-xl">
                 <div>
-                  Total ({cartItems.length}{" "}
-                  {cartItems.length > 1 ? "items" : "item"})
+                  Total ({totalItems} {cartItems.length > 1 ? "items" : "item"})
                 </div>
-                <div>{formatPrice(calculateTotalPrice())}</div>
+                <div>{formatPrice(totalPrice)}</div>
               </div>
               <p className="text-red-700 text-right text-sm py-4">
                 Excluding delievery charges
               </p>
-              <Link to="/" className="block lg:hidden">
-                <button className="px-4 py-2 border-[1.5px] border-yellow-500 hover:bg-yellow-500 hover:text-white transition duration-200 my-6 flex items-center gap-1 rounded-md">
-                  <FaAngleLeft className="inline" />
-                  Continue Shopping
-                </button>
-              </Link>
               <Link to="/checkout">
                 <Button text={"Checkout"} />
               </Link>

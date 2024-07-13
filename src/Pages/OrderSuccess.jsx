@@ -9,7 +9,9 @@ import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
 
 export default function OrderSuccess() {
-  const { cartItems, calculateTotalPrice } = useCart();
+  const { cartItems, calculateTotal } = useCart();
+  const { totalPrice, totalItems } = calculateTotal();
+
   return (
     <>
       <Header />
@@ -131,13 +133,13 @@ export default function OrderSuccess() {
                       </tr> */}
                       <tr className="font-bold">
                         <td className="px-6 py-4 whitespace-wrap flex items-center">
-                          {" "}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
                           <p>Total:</p>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-center">
-                          <p>{formatPrice(calculateTotalPrice())}</p>
+                          <p>{totalItems}</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                          <p>{formatPrice(totalPrice)}</p>
                         </td>
                       </tr>
                     </tbody>
@@ -150,7 +152,9 @@ export default function OrderSuccess() {
                 <div className="text-gray-500">
                   <p className="text-sm mb-2">Order ID: 7152559274</p>
                   <p className="text-sm mb-2">Order Date: July 13, 2024</p>
-                  <p className="text-sm mb-2">Order Total: ₦ 1.07</p>
+                  <p className="text-sm mb-2">
+                    Order Total: {formatPrice(totalPrice)}
+                  </p>
                 </div>
                 <h3 className="text-lg font-semibold">Payment Method</h3>
                 <p className="mb-2 text-gray-500">Paystack</p>

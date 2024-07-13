@@ -49,6 +49,10 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const incrementQuantity = (productId) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
@@ -65,11 +69,16 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
   };
 
-  const calculateTotalPrice = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.quantity * parseFloat(item.price),
-      0
+  const calculateTotal = () => {
+    const total = cartItems.reduce(
+      (acc, item) => ({
+        totalPrice: acc.totalPrice + item.quantity * parseFloat(item.price),
+        totalItems: acc.totalItems + item.quantity,
+      }),
+      { totalPrice: 0, totalItems: 0 }
     );
+
+    return total;
   };
 
   return (
@@ -81,7 +90,8 @@ export const CartProvider = ({ children }) => {
         setCartItems,
         incrementQuantity,
         decrementQuantity,
-        calculateTotalPrice,
+        calculateTotal,
+        clearCart,
       }}
     >
       {children}
