@@ -83,7 +83,7 @@ export default function OrderSuccess() {
                             <tr>
                               <td className="px-6 py-4 whitespace-wrap flex items-center">
                                 <img
-                                  src={product.image}
+                                  src={`https://api.timbu.cloud/images/${product.image}`}
                                   alt={product.name}
                                   className="w-16 h-16 mr-4"
                                 />
