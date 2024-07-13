@@ -3,8 +3,11 @@ import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import Subscription from "../Components/Subscription";
 import { FaAngleRight } from "react-icons/fa";
+import { useCart } from "../hooks/useCart";
+import { formatPrice } from "../utils/formatCurrency";
 
 const CheckoutPage = () => {
+  const { cartItems, calculateTotalPrice } = useCart();
   return (
     <>
       <Header />
@@ -67,12 +70,25 @@ const CheckoutPage = () => {
           <div className="bg-white border">
             <div className="flex justify-between items-center py-4 px-6">
               <span className="text-3xl">Your Cart</span>
-              <span className="font-bold text-2xl">1 item</span>
+              <span className="font-bold text-2xl">
+                {cartItems.length} {cartItems.length > 1 ? "items" : "item"}
+              </span>
             </div>
             <div className="text-gray-500">
-              <div className="flex justify-between py-6 border-t px-6">
-                <div>Jergens oil infused hydrating coconut. (x1)</div>
-                <div>₦ 1.00</div>
+              <div className="">
+                {cartItems.map((product, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex justify-between py-6 border-t px-6"
+                    >
+                      <div>
+                        {product.name}. ({product.quantity})
+                      </div>
+                      <div>{formatPrice(product.price * product.quantity)}</div>
+                    </div>
+                  );
+                })}
               </div>
               <div className="flex justify-between py-6 items-center border-t px-6">
                 <div>Coupons and Discounts</div>
@@ -85,17 +101,17 @@ const CheckoutPage = () => {
               </div>
             </div>
             <div className="text-gray-500">
-              <div className="flex justify-between py-4 px-6 border-t">
+              {/* <div className="flex justify-between py-4 px-6 border-t">
                 <div>Subtotal (NGN)</div>
                 <div>₦ 1.00</div>
               </div>
               <div className="flex justify-between py-4 border-t px-6">
                 <div>VAT 7.5 %</div>
                 <div>₦ 0.08</div>
-              </div>
+              </div> */}
               <div className="flex justify-between font-bold text-xl py-4 border-t px-6 text-black">
                 <div>TOTAL</div>
-                <div>₦ 1.08</div>
+                <div>{formatPrice(calculateTotalPrice())}</div>
               </div>
             </div>
           </div>

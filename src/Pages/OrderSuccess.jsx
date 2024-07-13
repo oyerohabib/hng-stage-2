@@ -1,11 +1,15 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import Subscription from "../Components/Subscription";
 import { FaAngleRight } from "react-icons/fa";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
+import { useCart } from "../hooks/useCart";
+import { formatPrice } from "../utils/formatCurrency";
 
 export default function OrderSuccess() {
+  const { cartItems, calculateTotalPrice } = useCart();
   return (
     <>
       <Header />
@@ -71,29 +75,39 @@ export default function OrderSuccess() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      <tr>
-                        <td className="px-6 py-4 whitespace-wrap flex items-center">
-                          <img
-                            src="../../assets/ProductImage.jpg"
-                            alt="Venus Eye Pencil Collection"
-                            className="w-16 h-16 mr-4"
-                          />
-                          <div>
-                            <div>Venus Eye Pencil Collection</div>
-                            <div className="mt-2">
+                      {cartItems.map((product, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            <tr>
+                              <td className="px-6 py-4 whitespace-wrap flex items-center">
+                                <img
+                                  src={product.image}
+                                  alt={product.name}
+                                  className="w-16 h-16 mr-4"
+                                />
+                                <div>
+                                  <div>{product.name}</div>
+                                  {/* <div className="mt-2">
                               <b>Size: </b>
                               <span className="text-gray-500">5&quot;</span>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
-                          <p>3</p>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
-                          <p className="font-bold">₦ 15,000</p>
-                        </td>
-                      </tr>
-                      <tr className="text-gray-500">
+                            </div> */}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-center">
+                                <p>{product.quantity}</p>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-center">
+                                <p className="font-bold">
+                                  {formatPrice(
+                                    product.price * product.quantity
+                                  )}
+                                </p>
+                              </td>
+                            </tr>
+                          </React.Fragment>
+                        );
+                      })}
+                      {/* <tr className="text-gray-500">
                         <td className="px-6 py-4 whitespace-wrap flex items-center">
                           {" "}
                         </td>
@@ -103,8 +117,8 @@ export default function OrderSuccess() {
                         <td className="px-6 py-4 whitespace-nowrap text-center">
                           <p className="">₦ 1.00</p>
                         </td>
-                      </tr>
-                      <tr className="text-gray-500">
+                      </tr> */}
+                      {/* <tr className="text-gray-500">
                         <td className="px-6 py-4 whitespace-wrap flex items-center">
                           {" "}
                         </td>
@@ -114,7 +128,7 @@ export default function OrderSuccess() {
                         <td className="px-6 py-4 whitespace-nowrap text-center">
                           <p className="">₦ 0.08</p>
                         </td>
-                      </tr>
+                      </tr> */}
                       <tr className="font-bold">
                         <td className="px-6 py-4 whitespace-wrap flex items-center">
                           {" "}
@@ -123,7 +137,7 @@ export default function OrderSuccess() {
                           <p>Total:</p>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-center">
-                          <p>₦ 15,000.08</p>
+                          <p>{formatPrice(calculateTotalPrice())}</p>
                         </td>
                       </tr>
                     </tbody>
@@ -135,7 +149,7 @@ export default function OrderSuccess() {
                 <h3 className="text-lg font-semibold mb-2">Order Summary</h3>
                 <div className="text-gray-500">
                   <p className="text-sm mb-2">Order ID: 7152559274</p>
-                  <p className="text-sm mb-2">Order Date: July 07, 2024</p>
+                  <p className="text-sm mb-2">Order Date: July 13, 2024</p>
                   <p className="text-sm mb-2">Order Total: ₦ 1.07</p>
                 </div>
                 <h3 className="text-lg font-semibold">Payment Method</h3>
@@ -148,7 +162,7 @@ export default function OrderSuccess() {
                     </span>
                   </p>
                   <p className="text-lg">
-                    Expected Date Of Delivery: <strong>July 10, 2022</strong>
+                    Expected Date Of Delivery: <strong>July 16, 2024</strong>
                   </p>
                 </div>
               </div>

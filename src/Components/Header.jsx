@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 
 export default function Header() {
-  const { cartItemCount } = useCart();
-  console.log(cartItemCount);
+  const { cartItems } = useCart();
   return (
     <>
       <header className="bg-white">
@@ -44,7 +43,7 @@ export default function Header() {
               <div className="inline relative">
                 <MdOutlineShoppingCart className="text-2xl text-yellow-600" />
                 <span className="bg-yellow-600 text-white text-xs rounded-full px-1 absolute -top-1 -right-1">
-                  {cartItemCount}
+                  {cartItems.length}
                 </span>
               </div>
               <span className="ml-1">Cart</span>

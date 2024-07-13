@@ -167,8 +167,11 @@ export default function Cart() {
               </div> */}
               <div className="bg-yellow-500 divide-y h-[1px] my-4"></div>
               <div className="flex justify-between font-bold text-xl">
-                <div>Total ({cartItems.length} items)</div>
-                <div>₦ {calculateTotalPrice()}</div>
+                <div>
+                  Total ({cartItems.length}{" "}
+                  {cartItems.length > 1 ? "items" : "item"})
+                </div>
+                <div>{formatPrice(calculateTotalPrice())}</div>
               </div>
               <p className="text-red-700 text-right text-sm py-4">
                 Excluding delievery charges
