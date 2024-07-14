@@ -12,7 +12,7 @@ export default function Header() {
     <>
       <header className="bg-white">
         <div className="container mx-auto px-4 py-8 flex justify-between items-center">
-          <h1 className="text-2xl md:text-4xl font-bold text-black">
+          <h1 className="text-2xl lg:text-4xl md:text-3xl font-bold text-black">
             <Link to="/">
               Beauty<span className="text-yellow-600">Home</span>
             </Link>
@@ -30,7 +30,7 @@ export default function Header() {
           </div>
           <div className="flex items-center space-x-4">
             <Link to="/" className="hidden md:flex items-center space-x-1">
-              <RiHome2Line className="text-base text-yellow-600" />
+              <RiHome2Line className="text-2xl text-yellow-600" />
               <span>Home</span>
             </Link>
             {/* Desktop Navs */}
@@ -42,7 +42,7 @@ export default function Header() {
                   {wishList.length}
                 </span>
               </div>
-              <span className="">Wishlist</span>
+              <span className=" xs:flex hidden">Wishlist</span>
             </Link>
 
             <Link to="/cart" className="flex items-center space-x-1">
@@ -52,19 +52,7 @@ export default function Header() {
                   {totalItems}
                 </span>
               </div>
-              <span className="ml-1">Cart</span>
-            </Link>
-
-            {/* Mobile Navs */}
-
-            <Link
-              to="/wishlist"
-              className="flex md:hidden items-center space-x-1"
-            >
-              <FaRegHeart className="text-2xl text-yellow-600" />
-            </Link>
-            <Link to="/cart" className="flex md:hidden items-center space-x-1">
-              <MdOutlineShoppingCart className="text-2xl text-yellow-600" />
+              <span className="ml-1 xs:flex hidden">Cart</span>
             </Link>
           </div>
         </div>
