@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
-// import { Products } from "../Constants/Products";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
-import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 
 const renderStarReviews = (rating) => {
@@ -25,7 +25,8 @@ export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1); // Initialize with 1 page
+  const [totalPages, setTotalPages] = useState(1);
+  const navigateTo = useNavigate();
 
   const { cartItems, addToCart, handleRemoveItem } = useCart();
 
@@ -77,6 +78,10 @@ export default function ProductList() {
     fetchProducts(currentPage);
   }, [currentPage]);
 
+  const navigateToProductDetail = (productId) => {
+    navigateTo(`/products/${productId}`);
+  };
+
   const handlePageChange = (page) => {
     window.scrollTo(0, 0);
     setCurrentPage(page);
@@ -111,9 +116,17 @@ export default function ProductList() {
                 src={product.image}
                 alt="Product Image"
                 className="w-full object-cover rounded-t-lg"
+                onClick={() => navigateToProductDetail(product.id)}
+                style={{ cursor: "pointer" }}
               />
               <div className="mt-4 flex flex-col gap-4 flex-grow">
-                <h3 className="text-xl">{product.name}</h3>
+                <h3
+                  className="text-xl"
+                  onClick={() => navigateToProductDetail(product.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {product.name}
+                </h3>
                 <div className="flex text-yellow-600">
                   {renderStarReviews(product.stars)}
                 </div>
