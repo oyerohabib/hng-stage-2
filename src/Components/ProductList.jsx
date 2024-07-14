@@ -20,6 +20,13 @@ const renderStarReviews = (rating) => {
 };
 
 export default function ProductList() {
+  // Logic handling product response from Timbu API
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1); // Initialize with 1 page
+
   const { cartItems, addToCart, handleRemoveItem } = useCart();
 
   const isInCart = (productId) => {
@@ -34,15 +41,10 @@ export default function ProductList() {
     }
   };
 
-  // Logic handling product response from Timbu API
-
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
+  const fetchProducts = (page) => {
     setLoading(true);
     fetch(
-      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=f79b9b80692d4c528019e02d843e7329&reverse_sort=false&page=1&size=10&Appid=QORLYEM2HICIBI8&Apikey=bd7863eb220049cd9850e05163a7cc0220240713223453586306`
+      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=f79b9b80692d4c528019e02d843e7329&reverse_sort=false&page=${page}&size=10&Appid=QORLYEM2HICIBI8&Apikey=bd7863eb220049cd9850e05163a7cc0220240713223453586306`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -61,6 +63,7 @@ export default function ProductList() {
             stars: item.stars || 4,
           }));
           setProducts(formattedProducts);
+          setTotalPages(Math.ceil(data.total / data.size));
           setLoading(false);
         }
       })
@@ -68,7 +71,15 @@ export default function ProductList() {
         console.error("Fetch failed:", error.message);
         setLoading(false);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchProducts(currentPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <section>
@@ -119,7 +130,11 @@ export default function ProductList() {
           ))
         )}
       </div>
-      <Pagination />
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </section>
   );
 }
