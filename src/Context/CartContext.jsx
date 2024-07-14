@@ -4,26 +4,26 @@ import { useState, createContext, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // function to retrieve cart items from localStorage
   const getCartItems = () => {
     const storedCartItems = localStorage.getItem("cartItems");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   };
 
+  const getWishlistItems = () => {
+    const storedWishlistItems = localStorage.getItem("wishlist");
+    return storedWishlistItems ? JSON.parse(storedWishlistItems) : [];
+  };
+
   const [cartItems, setCartItems] = useState(getCartItems());
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState(getWishlistItems());
 
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
-
-  // Save cart items to localStorage whenever cartItems state changes
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishList));
+  }, [wishList]);
 
   const addToCart = (productToAdd) => {
     // Checks if the product is already in cart
