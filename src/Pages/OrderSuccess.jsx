@@ -86,6 +86,7 @@ export default function OrderSuccess() {
                                   src={product.image}
                                   alt={product.name}
                                   className="w-16 h-16 mr-4"
+                                  loading="lazy"
                                 />
                                 <div>
                                   <div>{product.name}</div>

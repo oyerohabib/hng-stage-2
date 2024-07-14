@@ -61,6 +61,7 @@ export default function Cart() {
                             src={product.image}
                             alt="Venus Eye Pencil Collection"
                             className="w-16 h-16 mr-4"
+                            loading="lazy"
                           />
                           <div>
                             <div>{product.name}</div>
