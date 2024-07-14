@@ -10,7 +10,12 @@ export const useCart = () => {
     incrementQuantity,
     decrementQuantity,
     calculateTotal,
+    isInCart,
+    handleCartAction,
     clearCart,
+    wishList,
+    addToWishList,
+    removeFromWishList,
   } = useContext(CartContext);
 
   return {
@@ -21,6 +26,11 @@ export const useCart = () => {
     incrementQuantity,
     decrementQuantity,
     calculateTotal,
+    isInCart,
+    handleCartAction,
     clearCart,
+    wishList,
+    addToWishList,
+    removeFromWishList,
   };
 };

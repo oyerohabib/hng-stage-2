@@ -66,9 +66,11 @@ const ProductDetail = () => {
                 <p className="text-xl font-bold">
                   {formatPrice(product.current_price)}
                 </p>
-                <div className="flex text-yellow-600 items-center">
-                  Ratings:&nbsp;
-                  {renderStarReviews(parseInt(product.extra_infos[0].value))}
+                <div className="flex items-center flex-row">
+                  Ratings:&nbsp;{" "}
+                  <span className="text-yellow-600 flex">
+                    {renderStarReviews(parseInt(product.extra_infos[0].value))}
+                  </span>
                 </div>
               </div>
             </div>

@@ -7,6 +7,7 @@ import NotFound from "./Pages/NotFound";
 import ScrollToTop from "./Components/ScrollToTop";
 import { CartProvider } from "./Context/CartContext";
 import ProductDetail from "./Components/ProductDetail";
+import WishList from "./Pages/WishList";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/products/:productId" element={<ProductDetail />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/wishlist" element={<WishList />} />
             <Route path="/order-success" element={<OrderSuccess />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
