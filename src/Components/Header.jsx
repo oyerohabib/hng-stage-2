@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 
 export default function Header() {
-  const { calculateTotal } = useCart();
+  const { calculateTotal, wishList } = useCart();
   const { totalItems } = calculateTotal();
   return (
     <>
@@ -33,13 +33,18 @@ export default function Header() {
               <RiHome2Line className="text-base text-yellow-600" />
               <span>Home</span>
             </Link>
-            <Link
-              to="/wishlist"
-              className="hidden md:flex items-center space-x-1"
-            >
-              <FaRegHeart className="text-base text-yellow-600" />
-              <span>Wishlist</span>
+            {/* Desktop Navs */}
+
+            <Link to="/wishlist" className="flex items-center space-x-1">
+              <div className="inline relative">
+                <FaRegHeart className="text-2xl text-yellow-600" />
+                <span className="bg-yellow-600 text-white text-xs rounded-full px-1 absolute -top-1 -right-1">
+                  {wishList.length}
+                </span>
+              </div>
+              <span className="">Wishlist</span>
             </Link>
+
             <Link to="/cart" className="flex items-center space-x-1">
               <div className="inline relative">
                 <MdOutlineShoppingCart className="text-2xl text-yellow-600" />
@@ -49,6 +54,9 @@ export default function Header() {
               </div>
               <span className="ml-1">Cart</span>
             </Link>
+
+            {/* Mobile Navs */}
+
             <Link
               to="/wishlist"
               className="flex md:hidden items-center space-x-1"

@@ -130,7 +130,9 @@ export default function ProductList() {
                 </p>
                 <div className="mt-auto">
                   <Button
-                    text={isInCart(product.id) ? " from Cart" : "Add to Cart"}
+                    text={
+                      isInCart(product.id) ? "Remove from Cart" : "Add to Cart"
+                    }
                     onClick={() => handleCartAction(product)}
                   />
                 </div>
