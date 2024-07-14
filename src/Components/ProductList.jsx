@@ -9,7 +9,7 @@ import { formatPrice } from "../utils/formatCurrency";
 import Spinner from "./Spinner";
 import renderStarReviews from "../utils/renderReviews";
 
-export default function ProductList() {
+export default function ProductList({ searchTerm }) {
   // Logic handling product response from Timbu API
 
   const [products, setProducts] = useState([]);
@@ -81,6 +81,9 @@ export default function ProductList() {
       addToWishList(product);
     }
   };
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <section>
@@ -89,7 +92,7 @@ export default function ProductList() {
         {loading ? (
           <Spinner />
         ) : (
-          products.map((product) => (
+          filteredProducts.map((product) => (
             <div
               key={product.id}
               className="flex bg-white shadow-md rounded-lg p-4 relative flex-col"
