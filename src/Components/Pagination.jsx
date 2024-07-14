@@ -16,7 +16,9 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   return (
     <div className="flex justify-center mt-16">
       <button
-        className="px-2 py-1 sm:px-4 sm:py-2 bg-gray-100 rounded-lg mx-1"
+        className={`px-2 py-1 sm:px-4 sm:py-2 bg-gray-100 rounded-lg mx-1 ${
+          currentPage === 1 ? "cursor-not-allowed opacity-50" : ""
+        }`}
         onClick={handlePrevClick}
         disabled={currentPage === 1}
       >
@@ -36,7 +38,9 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
         </button>
       ))}
       <button
-        className="px-2 py-1 sm:px-4 sm:py-2 bg-yellow-100 rounded-lg mx-1"
+        className={`px-2 py-1 sm:px-4 sm:py-2 bg-gray-100 rounded-lg mx-1 ${
+          currentPage === totalPages ? "cursor-not-allowed opacity-50" : ""
+        }`}
         onClick={handleNextClick}
         disabled={currentPage === totalPages}
       >
