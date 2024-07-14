@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { IoMdSearch } from "react-icons/io";
 import { RiHome2Line } from "react-icons/ri";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -5,9 +6,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 
-export default function Header() {
+export default function Header({ setSearchTerm }) {
   const { calculateTotal, wishList } = useCart();
   const { totalItems } = calculateTotal();
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <>
       <header className="bg-white">
@@ -22,6 +28,7 @@ export default function Header() {
               type="text"
               placeholder="Search products"
               className="flex-grow px-4 py-2 focus:outline-none"
+              onChange={handleSearchChange}
             />
             <div className="w-px h-6 bg-gray-300"></div>
             <div className="p-2 text-gray-500">
