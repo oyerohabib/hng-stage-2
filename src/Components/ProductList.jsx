@@ -12,9 +12,13 @@ import placeholderImage from "/assets/ProductItems/placeholder.jpg";
 
 export default function ProductList({ searchTerm }) {
   // Logic handling product response from Timbu API
+  const Apikey = import.meta.env.VITE_API_KEY;
+  const Appid = import.meta.env.VITE_APP_ID;
+  const organization_id = import.meta.env.VITE_ORG_ID;
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -31,7 +35,7 @@ export default function ProductList({ searchTerm }) {
   const fetchProducts = (page) => {
     setLoading(true);
     fetch(
-      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=f79b9b80692d4c528019e02d843e7329&reverse_sort=false&page=${page}&size=10&Appid=QORLYEM2HICIBI8&Apikey=bd7863eb220049cd9850e05163a7cc0220240713223453586306`
+      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=${organization_id}&reverse_sort=false&page=${page}&size=10&Appid=${Appid}&Apikey=${Apikey}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -51,10 +55,12 @@ export default function ProductList({ searchTerm }) {
           }));
           setProducts(formattedProducts);
           setTotalPages(Math.ceil(data.total / data.size));
+          setError(null);
           setLoading(false);
         }
       })
       .catch((error) => {
+        setError(error);
         console.error("Fetch failed:", error.message);
         setLoading(false);
       });
@@ -95,6 +101,7 @@ export default function ProductList({ searchTerm }) {
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {error && `Error Occured, ${error}`}
         {loading ? (
           <Spinner />
         ) : (
