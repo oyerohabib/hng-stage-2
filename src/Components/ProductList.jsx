@@ -1,23 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaRegHeart, FaRegStar, FaStar } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import Pagination from "./Pagination";
 import Button from "./Button";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
 import Spinner from "./Spinner";
-
-const renderStarReviews = (rating) => {
-  const totalStars = 5;
-  const filledStars = Array(rating)
-    .fill()
-    .map((_, index) => <FaStar key={`star-filled-${index}`} />);
-  const emptyStars = Array(totalStars - rating)
-    .fill()
-    .map((_, index) => <FaRegStar key={`star-empty-${index}`} />);
-  return [...filledStars, ...emptyStars];
-};
+import renderStarReviews from "../utils/renderReviews";
 
 export default function ProductList() {
   // Logic handling product response from Timbu API

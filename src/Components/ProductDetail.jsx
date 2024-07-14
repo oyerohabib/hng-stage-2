@@ -6,6 +6,8 @@ import Subscription from "./Subscription";
 import Footer from "./Footer";
 import Header from "./Header";
 import { FaAngleRight } from "react-icons/fa";
+import renderStarReviews from "../utils/renderReviews";
+import { formatPrice } from "../utils/formatCurrency";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -61,10 +63,13 @@ const ProductDetail = () => {
                 className="w-32 h-32 object-cover rounded-lg mr-4"
               />
               <div>
-                <p className="text-xl font-bold">${product.current_price}</p>
-                <p className="text-gray-500">
-                  Review: {product.extra_infos[0].value}
+                <p className="text-xl font-bold">
+                  {formatPrice(product.current_price)}
                 </p>
+                <div className="flex text-yellow-600 items-center">
+                  Ratings:&nbsp;
+                  {renderStarReviews(parseInt(product.extra_infos[0].value))}
+                </div>
               </div>
             </div>
           </div>
