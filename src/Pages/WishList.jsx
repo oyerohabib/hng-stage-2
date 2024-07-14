@@ -70,6 +70,7 @@ const WishList = () => {
                   className="w-full object-cover rounded-t-lg"
                   onClick={() => navigateToProductDetail(product.id)}
                   style={{ cursor: "pointer" }}
+                  loading="lazy"
                 />
                 <div className="mt-4 flex flex-col gap-4 flex-grow">
                   <h3

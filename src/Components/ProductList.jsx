@@ -8,6 +8,7 @@ import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
 import Spinner from "./Spinner";
 import renderStarReviews from "../utils/renderReviews";
+import placeholderImage from "/assets/ProductItems/placeholder.jpg";
 
 export default function ProductList({ searchTerm }) {
   // Logic handling product response from Timbu API
@@ -16,6 +17,7 @@ export default function ProductList({ searchTerm }) {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const navigateTo = useNavigate();
 
   const {
@@ -85,6 +87,10 @@ export default function ProductList({ searchTerm }) {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
@@ -113,7 +119,17 @@ export default function ProductList({ searchTerm }) {
                 className="w-full object-cover rounded-t-lg"
                 onClick={() => navigateToProductDetail(product.id)}
                 style={{ cursor: "pointer" }}
+                loading="lazy"
+                onLoad={handleImageLoad}
               />
+              {!imageLoaded && (
+                <img
+                  src={placeholderImage}
+                  alt="Placeholder Image"
+                  className="w-full object-cover rounded-t-lg"
+                  // style={{ minHeight: "200px" }} // Adjust height as needed
+                />
+              )}
               <div className="mt-4 flex flex-col gap-4 flex-grow">
                 <h3
                   className="text-xl"
