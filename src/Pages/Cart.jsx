@@ -58,7 +58,7 @@ export default function Cart() {
                       <tr key={index}>
                         <td className="px-6 py-4 whitespace-wrap flex items-center max-w-[24rem]">
                           <img
-                            src={`https://api.timbu.cloud/images/${product.image}`}
+                            src={product.image}
                             alt="Venus Eye Pencil Collection"
                             className="w-16 h-16 mr-4"
                           />
