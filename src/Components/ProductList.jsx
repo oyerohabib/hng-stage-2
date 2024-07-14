@@ -85,7 +85,7 @@ export default function ProductList() {
   return (
     <section>
       <h2 className="text-6xl mb-8">Products</h2>
-      <div className="mb-6 flex items-center gap-2">
+      {/* <div className="mb-6 flex items-center gap-2">
         <span>Sort By: </span>
         <select className="border border-gray-300 p-2">
           <option>Category</option>
@@ -94,7 +94,7 @@ export default function ProductList() {
           <option>Cheapest</option>
           <option>Expensive</option>
         </select>
-      </div>
+      </div> */}
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {loading ? (
           <Spinner />
