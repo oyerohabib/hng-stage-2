@@ -2,25 +2,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import Pagination from "./Pagination";
+// import Pagination from "./Pagination";
 import Button from "./Button";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
 import Spinner from "./Spinner";
 import renderStarReviews from "../utils/renderReviews";
 import placeholderImage from "/assets/ProductItems/placeholder.jpg";
+import { Products } from "../Constants/Products";
 
 export default function ProductList({ searchTerm }) {
   // Logic handling product response from Timbu API
-  const Apikey = import.meta.env.VITE_API_KEY;
-  const Appid = import.meta.env.VITE_APP_ID;
-  const organization_id = import.meta.env.VITE_ORG_ID;
+  // const Apikey = import.meta.env.VITE_API_KEY;
+  // const Appid = import.meta.env.VITE_APP_ID;
+  // const organization_id = import.meta.env.VITE_ORG_ID;
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  // const [totalPages, setTotalPages] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
   const navigateTo = useNavigate();
 
@@ -32,38 +33,30 @@ export default function ProductList({ searchTerm }) {
     handleCartAction,
   } = useCart();
 
-  const fetchProducts = (page) => {
+  const fetchProducts = () => {
     setLoading(true);
-    fetch(
-      `https://timbu-get-all-products.reavdev.workers.dev?organization_id=${organization_id}&reverse_sort=false&page=${page}&size=10&Appid=${Appid}&Apikey=${Apikey}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.items) {
-          const formattedProducts = data.items.map((item) => ({
-            id: item.id,
-            name: item.name,
-            image:
-              item.photos && item.photos.length > 0
-                ? `https://api.timbu.cloud/images/${item.photos[0].url}`
-                : "../../assets/ProductItems/pencils.jpg",
-            price:
-              item.current_price && item.current_price[0].NGN[0]
-                ? parseFloat(item.current_price[0].NGN[0])
-                : 0,
-            stars: item.extra_infos || Math.round(Math.random() * 5),
-          }));
-          setProducts(formattedProducts);
-          setTotalPages(Math.ceil(data.total / data.size));
-          setError(null);
-          setLoading(false);
-        }
-      })
-      .catch((error) => {
-        setError(error);
-        console.error("Fetch failed:", error.message);
-        setLoading(false);
-      });
+    // fetch(
+    //   `https://timbu-get-all-products.reavdev.workers.dev?organization_id=${organization_id}&reverse_sort=false&page=${page}&size=10&Appid=${Appid}&Apikey=${Apikey}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data && data.items) {
+    try {
+      const formattedProducts = Products.map((item) => ({
+        id: item.id,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        stars: item.extra_infos || Math.round(Math.random() * 5),
+      }));
+      setProducts(formattedProducts);
+      setError(null);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      console.error("Fetch failed:", error.message);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -74,10 +67,10 @@ export default function ProductList({ searchTerm }) {
     navigateTo(`/products/${productId}`);
   };
 
-  const handlePageChange = (page) => {
-    window.scrollTo(0, 0);
-    setCurrentPage(page);
-  };
+  // const handlePageChange = (page) => {
+  //   window.scrollTo(0, 0);
+  //   setCurrentPage(page);
+  // };
 
   const isItemInWishList = (product) =>
     wishList.some((item) => item.id === product.id);
@@ -167,11 +160,11 @@ export default function ProductList({ searchTerm }) {
           ))
         )}
       </div>
-      <Pagination
+      {/* <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
-      />
+      /> */}
     </section>
   );
 }
