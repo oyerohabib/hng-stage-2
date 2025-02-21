@@ -8,6 +8,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 import { CartProvider } from "./Context/CartContext";
 import ProductDetail from "./Components/ProductDetail";
 import WishList from "./Pages/WishList";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </CartProvider>
+        <ToastContainer />
       </>
     </Router>
   );
