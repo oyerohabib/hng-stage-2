@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
@@ -5,17 +6,77 @@ import Subscription from "../Components/Subscription";
 import { FaAngleRight } from "react-icons/fa";
 import { useCart } from "../hooks/useCart";
 import { formatPrice } from "../utils/formatCurrency";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
-  const { cartItems, calculateTotal } = useCart();
+  const { cartItems, calculateTotal, clearCart } = useCart();
   const { totalPrice, totalItems } = calculateTotal();
+  const [checkingOut, setIsCheckingOut] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [userDetails, setUserDetails] = useState({
+    fullname: "",
+    email: "",
+    address: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+    setIsCheckingOut(true);
+
+    if (!userDetails.fullname || !userDetails.email || !userDetails.address) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    const payload = {
+      event_name: "order-item",
+      username: userDetails.fullname + " (" + userDetails.email + ")",
+      status: "success",
+      message: JSON.stringify(cartItems),
+    };
+
+    try {
+      const response = await fetch(
+        "https://ping.telex.im/v1/webhooks/01951b75-d923-794e-b2d1-36850ae038f9",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (response.ok) {
+        clearCart();
+        toast.success("Checkout successful");
+        navigate("/");
+      } else {
+        toast.error("Checkout failed");
+      }
+    } catch (error) {
+      toast.error("Error during checkout:", error);
+    }
+    setIsCheckingOut(false);
+  };
 
   return (
     <>
       <Header />
       <div className="container mx-auto p-4 my-4">
         <nav className="mb-4">
-          <Link to="/" className="text-gray-500 mr-2hover:underline mr-2">
+          <Link to="/" className="text-gray-500 mr-2 hover:underline">
             Home
           </Link>{" "}
           <FaAngleRight className="inline text-gray-500" />{" "}
@@ -30,6 +91,7 @@ const CheckoutPage = () => {
           <span className="ml-2">Checkout</span>
         </nav>
         <h1 className="text-5xl mb-6">Checkout</h1>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-4 sm:order-first order-last">
             <div className="bg-white py-6 rounded shadow-sm">
@@ -67,6 +129,51 @@ const CheckoutPage = () => {
                   </p>
                 </div>
               </div>
+
+              <div className="bg-white p-4 rounded shadow-sm mt-6">
+                <h2 className="text-xl font-bold mb-4">
+                  Enter Your Information
+                </h2>
+                <form onSubmit={handleCheckout}>
+                  <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Full Name"
+                    value={userDetails.fullname}
+                    onChange={handleInputChange}
+                    className="border p-2 mb-4 w-full"
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={userDetails.email}
+                    onChange={handleInputChange}
+                    className="border p-2 mb-4 w-full"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Address"
+                    value={userDetails.address}
+                    onChange={handleInputChange}
+                    className="border p-2 mb-4 w-full"
+                    required
+                  />
+                  <div className="flex justify-center mt-6">
+                    <button
+                      type="submit"
+                      disabled={checkingOut}
+                      className="border-[2px] rounded-md border-yellow-600 font-bold sm:px-8 px-4 sm:py-4 py-2 mt-2 
+            text-xl hover:bg-yellow-600 hover:text-white transition duration-200 lg:w-[363px]"
+                    >
+                      {checkingOut ? "Processing request..." : "Checkout Here"}
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
           <div className="bg-white border">
@@ -103,30 +210,12 @@ const CheckoutPage = () => {
               </div>
             </div>
             <div className="text-gray-500">
-              {/* <div className="flex justify-between py-4 px-6 border-t">
-                <div>Subtotal (NGN)</div>
-                <div>₦ 1.00</div>
-              </div>
-              <div className="flex justify-between py-4 border-t px-6">
-                <div>VAT 7.5 %</div>
-                <div>₦ 0.08</div>
-              </div> */}
               <div className="flex justify-between font-bold text-xl py-4 border-t px-6 text-black">
                 <div>TOTAL</div>
                 <div>{formatPrice(totalPrice)}</div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex justify-center mt-6">
-          <Link to="/order-success">
-            <button
-              className="border-[2px] rounded-md border-yellow-600 font-bold sm:px-8 px-4 sm:py-4 py-2 mt-2 
-            text-xl hover:bg-yellow-600 hover:text-white transition duration-200 lg:w-[363px]"
-            >
-              Checkout Here
-            </button>
-          </Link>
         </div>
       </div>
       <Subscription />
