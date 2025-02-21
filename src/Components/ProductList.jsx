@@ -20,7 +20,7 @@ export default function ProductList({ searchTerm }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   // const [totalPages, setTotalPages] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
   const navigateTo = useNavigate();
