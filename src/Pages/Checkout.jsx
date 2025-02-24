@@ -48,7 +48,7 @@ const CheckoutPage = () => {
 
     try {
       const response = await fetch(
-        "https://ping.telex.im/v1/webhooks/01952a2e-7321-7a75-8f04-13dd56f849a8",
+        "https://ping.telex.im/v1/webhooks/01953a34-6a81-7448-9a84-fb55b33f27ca",
         {
           method: "POST",
           headers: {
